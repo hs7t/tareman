@@ -1,0 +1,4 @@
+__pycache__/
+env/
+old/
+tasks.db
