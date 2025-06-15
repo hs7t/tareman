@@ -17,13 +17,10 @@ def canBeString(value):
         return False
     return True
 
+
 def toType(type_string):
-    return {
-        "str": str,
-        "int": int,
-        "float": float,
-        "bool": bool
-    }.get(type_string)
+    return {"str": str, "int": int, "float": float, "bool": bool}.get(type_string)
+
 
 def listSelect(options, intro="select one:", prompt="your answer", names_allowed=False):
     """

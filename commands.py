@@ -46,9 +46,11 @@ def delete_task(args, conn):
     print("\n done! all tasks:")
     printTasks(conn, TABLE["name"])
 
+
 def all_tasks(args, conn):
     print("all tasks:")
     printTasks(conn, TABLE["name"])
+
 
 commands = {
     "new": {

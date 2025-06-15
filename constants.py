@@ -14,7 +14,6 @@ TABLE = {
         "id": "INTEGER PRIMARY KEY AUTOINCREMENT",
         "name": "TEXT NOT NULL",
         "time": "INTEGER",
-        "status": "INTEGER"
-    }
+        "status": "INTEGER",
+    },
 }
-

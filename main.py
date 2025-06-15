@@ -24,7 +24,7 @@ def main():
     registerCommands(parser)
 
     # Register debug mode flag
-    parser.add_argument('-d', '--debugmode', action="store_true", help="show errors")
+    parser.add_argument("-d", "--debugmode", action="store_true", help="show errors")
 
     args = parser.parse_args()
 
@@ -35,7 +35,6 @@ def main():
     with sqlite3.connect(DATABASE_FILENAME) as conn:
         setUpDB(conn, TABLE_NAME)
         processInput(args, conn)
-
 
 
 if __name__ == "__main__":
