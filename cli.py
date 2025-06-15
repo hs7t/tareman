@@ -17,7 +17,6 @@ def registerCommands(parser):
                     actions[command_key].add_argument(argument_key, type=toType(argument_info["type"]), nargs=argument_info["nargs"])
                 elif argument_info["kind"] == "flag":
                     actions[command_key].add_argument(f"--argument_key", *argument_info["flag_aliases"], type=toType(argument_info["type"]), nargs=argument_info["nargs"])
-                # TODO: support non-positional arguments for commands
 
 def processInput(args, conn):
     if args.command in commands:
