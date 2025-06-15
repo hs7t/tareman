@@ -13,17 +13,24 @@ def new_task(args, conn):
     current_time = int(time.time())
     task_status = STATUS_PENDING
 
-    insertTask(conn, TABLE_NAME, task_name, current_time, task_status)
+    insertTask(conn, TABLE["name"], task_name, current_time, task_status)
     print(f"added a new task named {task_name}!")
 
+
 def delete_task(args, conn):
+    i = 0
+    property_options = {}
+    for header, property in TABLE["headers"].items():
+        property_options.update({header: (i + 1)})
+        i += 1
+
     if args.property is not None:
         task_property = args.property
-        if task_property not in PROPERTY_OPTIONS:
+        if task_property not in property_options:
             raise Exception("oh no! it looks like that's not a valid property.")
     else:
         task_property = listSelect(
-            PROPERTY_OPTIONS,
+            property_options,
             intro="properties by which to select tasks:",
             names_allowed=True,
         )
@@ -35,13 +42,13 @@ def delete_task(args, conn):
     else:
         task_property_value = input("a value to look for: ")
 
-    deleteByProperty(conn, TABLE_NAME, task_property, task_property_value)
+    deleteByProperty(conn, TABLE["name"], task_property, task_property_value)
     print("\n done! all tasks:")
-    printTasks(conn, TABLE_NAME)
+    printTasks(conn, TABLE["name"])
 
 def all_tasks(args, conn):
     print("all tasks:")
-    printTasks(conn, TABLE_NAME)
+    printTasks(conn, TABLE["name"])
 
 commands = {
     "new": {

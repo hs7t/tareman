@@ -7,15 +7,14 @@ from cli import *
 
 def setUpDB(connection, table_name):
     cursor = connection.cursor()
+    columns = [f"{header} {property}" for header, property in TABLE["headers"].items()]
 
     create_table_query = f"""
-    CREATE TABLE IF NOT EXISTS {table_name} (
-        {TASK_ID} INTEGER PRIMARY KEY AUTOINCREMENT,
-        {TASK_NAME} TEXT NOT NULL,
-        {TASK_TIME} INTEGER,
-        {TASK_STATUS} INTEGER
+    CREATE TABLE IF NOT EXISTS {TABLE["name"]} (
+        {[",\n".join(columns)]}
     );
     """
+
     cursor.execute(create_table_query)
     connection.commit()
 

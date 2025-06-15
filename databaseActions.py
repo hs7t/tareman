@@ -16,7 +16,7 @@ def insertTask(conn, table, name, time, status):
     cursor = conn.cursor()
 
     insert_query = f"""
-    INSERT INTO {table} ({TASK_NAME}, {TASK_TIME}, {TASK_STATUS})
+    INSERT INTO {table} (name, time, status)
     VALUES (?, ?, ?);
     """
 
